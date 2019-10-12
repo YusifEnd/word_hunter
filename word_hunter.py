@@ -49,13 +49,8 @@ class Oyun(object):
     curs.execute("SELECT * FROM finds")
     for i in curs.fetchall():
         listx.append(*i)
-    mixed = list(random.choice(listx))
-    show = list()
-    # herfleri mix eden zaman heqiqi soz duzeltmemesi ucun filter
-    if len(show) == 0 or show == mixed:
-        for i in range(len(mixed)):
-            show.append(random.choice(mixed))
-            mixed.remove(show[-1])
+    show = list(random.choice(listx))
+    random.shuffle(show)
 
     def __init__(self):
         self.name = user
