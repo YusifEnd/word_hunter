@@ -19,6 +19,14 @@ in_playing = """
 """
 
 
+def loading():
+    print('Loading')
+    for i in range(10):
+        print('>', end=' ')
+        time.sleep(0.3)
+
+
+
 nameless = ['pass', 'exit', 'sys', 'start']  # don't use for username :)
 via = sqlite3.connect('oyun.db')
 curs = via.cursor()
@@ -115,6 +123,7 @@ while True:
             curs_gamer.execute('SELECT * FROM gamer WHERE user_name=? and sifre=?', (user, parol))
             datas = curs_gamer.fetchone()
             if datas:
+                loading()
                 print(in_playing)
                 gamer = Oyun()
                 gamer.main()
@@ -136,6 +145,7 @@ while True:
                     if len(parol) < 6:
                         print('Sifrede en az 6 simvol olmalidir')
                     else:
+                        loading()
                         print(in_playing)
                         add_user(user, parol, 0)
                         gamer = Oyun()
