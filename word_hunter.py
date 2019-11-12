@@ -22,7 +22,7 @@ in_playing = """
 def loading():
     print('Loading')
     for i in range(10):
-        print('>', end=' ', flush=True)
+        print('█', end=' ', flush=True)
         time.sleep(0.3)
 
 
@@ -98,7 +98,6 @@ class Oyun(object):
                             curs_gamer.execute('SELECT * FROM gamer')
                             curs_gamer.execute('UPDATE gamer SET point=? WHERE user_name=?', [self.player_point, self.name])
                             via_gamer.commit()
-                    time.sleep(3)
                     sys.exit()
                 elif answer == 'score':
                     curs_gamer.execute('SELECT * FROM gamer')
