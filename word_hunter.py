@@ -33,7 +33,8 @@ curs = via.cursor()
 
 via_gamer = sqlite3.connect('gamer.db')
 curs_gamer = via_gamer.cursor()
-
+for i in range(10):
+	print('')
 print('\t\t<:- SOZ OVCUSU -:>')
 print(start)
 time.sleep(0.5)
