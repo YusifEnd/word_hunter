@@ -85,8 +85,11 @@ class Oyun(object):
                     print('DOĞRU CAVAB ...')
             elif answer not in found:
                 if answer == 'exit':
-                    print('Oyun sonlanir ...')
                     print('Bu oyunda siz {} xal qazandiniz ;)'.format(self.player_point))
+                    print('Oyun sonlanir', end='')
+                    for y in range(10):
+                    	print('.', end='' if y!=9 else '\n', flush=True)
+                    	time.sleep(.3)
                     curs_gamer.execute('SELECT point FROM gamer WHERE user_name=?', [self.name])
                     for i in curs_gamer.fetchone():
                         if i > self.player_point:
