@@ -7,9 +7,9 @@ import random
 
 
 start = """
- -------    -----    ------
-| START |  | NEW |  | EXIT |
- -------    -----    ------
+ -----    ------     ------
+| NEW |  | START |  | EXIT |
+ -----    ------     ------
 """
 
 in_playing = """
