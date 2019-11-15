@@ -85,7 +85,7 @@ class Oyun(object):
                     self.player_point += 1
                     print('DOĞRU CAVAB ...')
             elif answer not in found:
-                if answer == 'exit':
+                if answer.lower() == 'exit':
                     print('Bu oyunda siz {} xal qazandiniz ;)'.format(self.player_point))
                     print('Oyun sonlanir', end='')
                     for y in range(10):
@@ -100,12 +100,12 @@ class Oyun(object):
                             curs_gamer.execute('UPDATE gamer SET point=? WHERE user_name=?', [self.player_point, self.name])
                             via_gamer.commit()
                     sys.exit()
-                elif answer == 'score':
+                elif answer.lower() == 'score':
                     curs_gamer.execute('SELECT * FROM gamer')
                     curs_gamer.execute('SELECT point FROM gamer WHERE user_name=?', [self.name])
                     for bal in curs_gamer.fetchone():
                         print('Topladiginiz en yuksek bal: ', bal)
-                elif answer == 'top 10':
+                elif answer.lower() == 'top 10':
                     curs_gamer.execute('SELECT * FROM gamer ORDER BY point DESC LIMIT 10')
                     for i in curs_gamer.fetchall():
                         print(i[0], ':', i[2])
@@ -116,10 +116,10 @@ class Oyun(object):
 
 
 while True:
-    alo = input('\nSecdiyiniz bolmenin adini bura yazin_>:')
-    if alo == 'exit':
+    query = input('\nSecdiyiniz bolmenin adini bura yazin_>:')
+    if query.lower() == 'exit':
         sys.exit()
-    elif alo == 'start':
+    elif query.lower() == 'start':
         while True:
             user = input('Oyuncu adinizi daxil edin: ').upper()
             parol = input('Oyuncu sifrenizi daxil edin: ')
@@ -132,7 +132,7 @@ while True:
                 gamer.main()
             else:
                 print('Oyuncu adi ve ya sifresi sehvdir !')
-    elif alo == "new":
+    elif query.lower() == "new":
         while True:
             user = input('Oyuncu adinizi teyin edin: ').upper()
             data = curs_gamer.execute('SELECT * FROM gamer WHERE user_name=?', [user])
